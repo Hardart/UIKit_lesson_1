@@ -8,10 +8,21 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    
+    @IBOutlet weak var login: UITextField!
+    @IBAction func entrance(_ sender: Any) {
+        let myLogin = self.login.text
+        if myLogin != "" {
+            print("Your text is \(myLogin!)")
+        }
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+//        self.login.placeholder = "Hello"
     }
 
 
