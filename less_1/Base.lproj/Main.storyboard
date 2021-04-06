@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_7" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -14,38 +14,44 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="less_1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="PjQ-cO-Ae5">
-                                <rect key="frame" x="0.0" y="44" width="428" height="848"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Авторизация" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gVh-VC-657">
-                                        <rect key="frame" x="134.66666666666669" y="50" width="158.66666666666669" height="34.333333333333343"/>
+                                        <rect key="frame" x="127.5" y="50" width="159" height="34.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Логин" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yfL-iZ-1dP" userLabel="login">
-                                        <rect key="frame" x="80" y="144.33333333333334" width="268" height="34"/>
+                                        <rect key="frame" x="80" y="134.5" width="254" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zPK-wW-2H6" userLabel="password">
-                                        <rect key="frame" x="80" y="188.33333333333334" width="268" height="34"/>
+                                        <rect key="frame" x="80" y="178.5" width="254" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ky4-EY-E9Z">
-                                        <rect key="frame" x="80" y="262.33333333333331" width="268" height="30"/>
+                                        <rect key="frame" x="80" y="252.5" width="254" height="30"/>
                                         <color key="backgroundColor" name="AccentColor"/>
-                                        <state key="normal" title="Button">
+                                        <state key="normal" title="Войти">
                                             <color key="titleColor" systemColor="systemGroupedBackgroundColor"/>
                                         </state>
                                         <connections>
                                             <action selector="entranceBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N2h-XO-711"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sh-Aq-xQz">
+                                        <rect key="frame" x="207" y="219.5" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -55,10 +61,12 @@
                                     <constraint firstItem="ky4-EY-E9Z" firstAttribute="top" secondItem="zPK-wW-2H6" secondAttribute="bottom" constant="40" id="8HH-Eq-mN4"/>
                                     <constraint firstItem="yfL-iZ-1dP" firstAttribute="centerX" secondItem="PjQ-cO-Ae5" secondAttribute="centerX" id="97Y-Xu-Xuj"/>
                                     <constraint firstItem="zPK-wW-2H6" firstAttribute="top" secondItem="yfL-iZ-1dP" secondAttribute="bottom" constant="10" id="9ju-ny-fZj"/>
-                                    <constraint firstAttribute="bottom" secondItem="ky4-EY-E9Z" secondAttribute="bottom" constant="400" id="NgF-EW-NzT"/>
+                                    <constraint firstAttribute="bottom" secondItem="ky4-EY-E9Z" secondAttribute="bottom" constant="20" id="NgF-EW-NzT"/>
                                     <constraint firstItem="zPK-wW-2H6" firstAttribute="centerX" secondItem="PjQ-cO-Ae5" secondAttribute="centerX" id="Oh6-x7-kPR"/>
-                                    <constraint firstItem="yfL-iZ-1dP" firstAttribute="top" secondItem="gVh-VC-657" secondAttribute="bottom" constant="60" id="Pha-80-Cob"/>
+                                    <constraint firstItem="yfL-iZ-1dP" firstAttribute="top" secondItem="gVh-VC-657" secondAttribute="bottom" constant="50" id="Pha-80-Cob"/>
                                     <constraint firstItem="ky4-EY-E9Z" firstAttribute="leading" secondItem="yfL-iZ-1dP" secondAttribute="leading" id="b5i-vN-Ewi"/>
+                                    <constraint firstItem="2sh-Aq-xQz" firstAttribute="top" secondItem="zPK-wW-2H6" secondAttribute="bottom" constant="7" id="ikx-wY-Dkr"/>
+                                    <constraint firstItem="2sh-Aq-xQz" firstAttribute="centerX" secondItem="PjQ-cO-Ae5" secondAttribute="centerX" id="jvP-On-5SK"/>
                                     <constraint firstItem="yfL-iZ-1dP" firstAttribute="leading" secondItem="PjQ-cO-Ae5" secondAttribute="leading" constant="80" id="rN3-s0-lOE"/>
                                     <constraint firstItem="gVh-VC-657" firstAttribute="centerX" secondItem="PjQ-cO-Ae5" secondAttribute="centerX" id="rol-e6-Dku"/>
                                     <constraint firstItem="ky4-EY-E9Z" firstAttribute="centerX" secondItem="PjQ-cO-Ae5" secondAttribute="centerX" id="vzB-Y3-dXK"/>
@@ -68,7 +76,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemGray2Color"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PjQ-cO-Ae5" secondAttribute="trailing" id="NUm-wT-Y78"/>
                             <constraint firstItem="PjQ-cO-Ae5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RdG-IF-ywr"/>
@@ -78,9 +86,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="errorMessage" destination="2sh-Aq-xQz" id="hed-ib-axE"/>
                         <outlet property="login_input" destination="yfL-iZ-1dP" id="ZnE-ti-1qD"/>
                         <outlet property="pass_input" destination="zPK-wW-2H6" id="P1l-0L-4YN"/>
-                        <segue destination="e8w-tk-usY" kind="show" identifier="toInfo" id="HJN-Wj-332"/>
+                        <outlet property="scrollView" destination="PjQ-cO-Ae5" id="E7w-F1-kEB"/>
+                        <segue destination="e8w-tk-usY" kind="showDetail" identifier="toInfo" id="HJN-Wj-332"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -92,11 +102,11 @@
             <objects>
                 <viewController id="e8w-tk-usY" customClass="accountInfoViewController" customModule="less_1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Xc-9s-c5i">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Информация" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxe-nL-CaO" userLabel="INFO">
-                                <rect key="frame" x="50" y="100" width="328" height="24"/>
+                                <rect key="frame" x="50" y="100" width="314" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -125,11 +135,11 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
