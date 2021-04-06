@@ -21,8 +21,8 @@ class ViewController: UIViewController {
     
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-//        self.login.placeholder = "Hello"
+		super.viewDidLoad()
+		self.login.placeholder = "Hello"
     }
 
 
