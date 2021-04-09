@@ -48,8 +48,6 @@ class ViewController: UIViewController {
     }
     
     
-    
-
     @objc func keyboardWasShown(notification: Notification) {
     // Получаем размер клавиатуры
     let info = notification.userInfo! as NSDictionary
