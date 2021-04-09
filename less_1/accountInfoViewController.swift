@@ -8,7 +8,15 @@
 import UIKit
 
 class accountInfoViewController: UIViewController {
-
+    
+    @IBOutlet weak var label: UILabel!
+    
+    var stringToChange = String()
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.label.text = self.stringToChange
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

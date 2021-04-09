@@ -11,29 +11,45 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var login_input: UITextField!
     @IBOutlet weak var pass_input: UITextField!
-    @IBOutlet weak var errorMessage: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    let tabBarVC = "tabBarVC"
+    let myLogin = "hardart"
+    let myPass = "12345"
     
     override func viewDidLoad() {
 		super.viewDidLoad()
     }
 
-    @IBAction func entranceBtn(_ sender: Any) {
-        let myLogin = "hardart"
-        let myPass = "12345"
-        let login = self.login_input.text
-        let pass = self.pass_input.text
-        if login == myLogin,
-           pass == myPass {
-            performSegue(withIdentifier: "toInfo", sender: self)
-            self.errorMessage.text = ""
-        } else if login == ""{
-            self.errorMessage.text = "Поле Логин не может быть пустым"
-        } else {
-            self.errorMessage.text = "Не верный логин или пароль!"
-        }
+    func showAlert(alertText: String) {
+        let alertCtrl = UIAlertController(title: "Ошибка", message: alertText, preferredStyle: UIAlertController.Style.alert)
+        let alertButton = UIAlertAction(title: "Ok", style: UIAlertAction.Style.cancel, handler: {_ in
+            self.login_input.text = ""
+            self.pass_input.text = ""
+        })
+        alertCtrl.addAction(alertButton)
+        present(alertCtrl, animated: true, completion: nil)
     }
     
+    
+    @IBAction func entranceBtn(_ sender: Any) {
+        let login = self.login_input.text
+        let pass = self.pass_input.text
+        
+        guard login?.trimmingCharacters(in: .whitespacesAndNewlines) == myLogin,
+              pass?.trimmingCharacters(in: .whitespacesAndNewlines) == myPass
+        else {
+            showAlert(alertText: "Логин или Пароль не верны!\nили не заполнены")
+            return
+
+        }
+        
+        performSegue(withIdentifier: tabBarVC, sender: self)
+    }
+    
+    
+    
+
     @objc func keyboardWasShown(notification: Notification) {
     // Получаем размер клавиатуры
     let info = notification.userInfo! as NSDictionary
