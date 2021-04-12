@@ -1,22 +1,14 @@
 //
-//  accountInfoViewController.swift
+//  customCollectionViewController.swift
 //  less_1
 //
-//  Created by Артем Шакиров on 06.04.2021.
+//  Created by Артем Шакиров on 12.04.2021.
 //
 
 import UIKit
 
-class accountInfoViewController: UIViewController {
-    
-    @IBOutlet weak var label: UILabel!
-    
-    var stringToChange = String()
-    
-    override func viewDidAppear(_ animated: Bool) {
-        self.label.text = self.stringToChange
-    }
-    
+class customCollectionViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
