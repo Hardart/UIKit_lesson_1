@@ -9,9 +9,24 @@ import UIKit
 
 class customCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var collectLabel: UILabel!
+    
+    func clearCell(){
+        collectLabel.text = nil
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        clearCell()
+    }
+    
+    override func prepareForReuse() {
+        clearCell()
+    }
+    
+    func configure(title: String) {
+        collectLabel.text = title
     }
 
 }
