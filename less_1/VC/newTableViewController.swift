@@ -12,7 +12,7 @@ class newTableViewController: UIViewController {
     @IBOutlet weak var myTableView: UITableView!
     
     let groupCellID = "cellForGroup"
-    let toTableViewSegue = "toTableViewSegue"
+    let toCollecViewSegue = "toCollection"
     var numbers = ["One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten"]
     
     override func viewDidLoad() {
@@ -25,13 +25,22 @@ class newTableViewController: UIViewController {
         myTableView.register(nibFile, forCellReuseIdentifier: groupCellID)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let dst = segue.destination as! customCollectionViewController
+        let src = segue.source as! newTableViewController
+        let index = src.myTableView.indexPathForSelectedRow
+        dst.titleCell = numbers[index!.row]
+        
+    }
+    
 }
 
 extension newTableViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: toTableViewSegue, sender: self)
+        performSegue(withIdentifier: toCollecViewSegue, sender: self)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

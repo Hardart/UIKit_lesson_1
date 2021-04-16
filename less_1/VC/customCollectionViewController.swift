@@ -13,6 +13,7 @@ class customCollectionViewController: UIViewController {
     @IBOutlet weak var customCollectView: UICollectionView!
     
     let collectCell = "customCollectionCell"
+    var titleCell = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +42,7 @@ extension customCollectionViewController: UICollectionViewDataSource, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectCell, for: indexPath) as? customCollectionViewCell else {return UICollectionViewCell()}
         
-        cell.configure(title: "Photo \(indexPath.item + 1)")
+        cell.configure(title:  titleCell + String(indexPath.item + 1))
         return cell
     }
     
