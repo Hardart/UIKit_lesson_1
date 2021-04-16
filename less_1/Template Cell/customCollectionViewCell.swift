@@ -10,9 +10,11 @@ import UIKit
 class customCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var collectLabel: UILabel!
+    @IBOutlet weak var collectImage: UIImageView!
     
     func clearCell(){
         collectLabel.text = nil
+        collectImage.image = nil
     }
     
     override func awakeFromNib() {
@@ -25,8 +27,9 @@ class customCollectionViewCell: UICollectionViewCell {
         clearCell()
     }
     
-    func configure(title: String) {
+    func configure(title: String, image: UIImage) {
         collectLabel.text = title
+        collectImage.image = image
     }
 
 }

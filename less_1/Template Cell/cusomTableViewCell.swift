@@ -15,7 +15,7 @@ class cusomTableViewCell: UITableViewCell {
     @IBOutlet weak var descLabel: UILabel!
         
     
-    func clearCell(){
+    func clearCell() {
         titleLabel.text = nil
         descLabel.text = nil
         myImageView.image = nil
@@ -36,9 +36,9 @@ class cusomTableViewCell: UITableViewCell {
         clearCell()
     }
     
-    func configure(title: String?, description: String?, image: UIImage?) {
+    func configure(title: String?, age: String?, image: UIImage?) {
         titleLabel.text = title
-        descLabel.text = description
+        descLabel.text = age
         myImageView.image = image
     }
 }

@@ -12,44 +12,34 @@ class customCollectionViewController: UIViewController {
     
     @IBOutlet weak var customCollectView: UICollectionView!
     
-    let collectCell = "customCollectionCell"
-    var titleCell = String()
-    
+    let collectCellID = "customCollectionCell"
+    var photos = [UIImage]()
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        customCollectView.register(UINib(nibName: "customCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: collectCell)
+        customCollectView.register(UINib(nibName: "customCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: collectCellID)
         customCollectView.dataSource = self
         customCollectView.delegate = self
         
     }
  
-
 }
 
 extension customCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate  {
     
-
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectCell, for: indexPath) as? customCollectionViewCell else {return UICollectionViewCell()}
-        
-        cell.configure(title:  titleCell + String(indexPath.item + 1))
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectCellID, for: indexPath) as? customCollectionViewCell else {return UICollectionViewCell()}
+        cell.configure(title:  "Photo \(indexPath.row + 1)", image: photos[indexPath.item])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.item)
     }
-    
     
 }
 
@@ -59,4 +49,5 @@ extension customCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 130, height: 130)
     }
+    
 }

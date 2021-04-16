@@ -9,21 +9,43 @@ import UIKit
 
 class myGroupsViewController: UIViewController {
 
+    @IBOutlet weak var myGroups: UITableView!
+    
+    let groupCellID = "cusomTableViewCell"
+    var myGroupsArray = DataStorage.shared.myGroups
+        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        
+        myGroups.dataSource = self
+        myGroups.delegate = self
+        
+        let nibFile = UINib(nibName: "cusomTableViewCell", bundle: nil)
+        myGroups.register(nibFile, forCellReuseIdentifier: groupCellID)
     }
     
+}
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension myGroupsViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return myGroupsArray.count
     }
-    */
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: groupCellID, for: indexPath) as! cusomTableViewCell
+        if myGroupsArray.count > 0 {
+        cell.configure(title: myGroupsArray[indexPath.row].title, age: myGroupsArray[indexPath.row].desc, image: myGroupsArray[indexPath.row].image)
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        myGroupsArray.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+    }
 
 }

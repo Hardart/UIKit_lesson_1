@@ -17,6 +17,9 @@ class ViewController: UIViewController {
     let myLogin = "hardart"
     let myPass = "12345"
     
+    
+    
+    
     override func viewDidLoad() {
 		super.viewDidLoad()
     }
@@ -33,16 +36,16 @@ class ViewController: UIViewController {
     
     
     @IBAction func entranceBtn(_ sender: Any) {
-        let login = self.login_input.text
-        let pass = self.pass_input.text
-        
-        guard login?.trimmingCharacters(in: .whitespacesAndNewlines) == myLogin,
-              pass?.trimmingCharacters(in: .whitespacesAndNewlines) == myPass
-        else {
-            showAlert(alertText: "Логин или Пароль не верны!\nили не заполнены")
-            return
-
-        }
+//        let login = self.login_input.text
+//        let pass = self.pass_input.text
+//
+//        guard login?.trimmingCharacters(in: .whitespacesAndNewlines) == myLogin,
+//              pass?.trimmingCharacters(in: .whitespacesAndNewlines) == myPass
+//        else {
+//            showAlert(alertText: "Логин или Пароль не верны!\nили не заполнены")
+//            return
+//
+//        }
         
         performSegue(withIdentifier: tabBarVC, sender: self)
     }

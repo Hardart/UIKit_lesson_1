@@ -6,3 +6,10 @@
 //
 
 import Foundation
+import UIKit
+
+struct Group {
+    var title: String
+    var image: UIImage?
+    var desc: String?
+}

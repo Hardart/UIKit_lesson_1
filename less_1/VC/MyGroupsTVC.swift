@@ -8,38 +8,52 @@
 import UIKit
 
 class MyGroupsTVC: UITableViewController {
-
+    
+    let groupCellID = "cusomTableViewCell"
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.tableView.register(UINib(nibName: "cusomTableViewCell", bundle: nil), forCellReuseIdentifier: groupCellID)
     }
 
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        
+        return DataStorage.shared.myGroups.count
     }
-
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: groupCellID, for: indexPath) as! cusomTableViewCell
+        let myGroupsArray = DataStorage.shared.myGroups
+        cell.configure(title: myGroupsArray[indexPath.row].title, age: myGroupsArray[indexPath.row].desc, image: myGroupsArray[indexPath.row].image)
+        
         return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        print(DataStorage.shared.myGroups)
+        DataStorage.shared.myGroups.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+        print(DataStorage.shared.myGroups)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
 
     /*
     // Override to support conditional editing of the table view.

@@ -9,37 +9,56 @@ import UIKit
 
 class AllGroupsTVC: UITableViewController {
 
+    let groupCellID = "cusomTableViewCell"
+    let allGroups = DataStorage.shared.groups
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        let nibFile = UINib(nibName: "cusomTableViewCell", bundle: nil)
+        self.tableView.register(nibFile, forCellReuseIdentifier: groupCellID)
     }
-
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return allGroups.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: groupCellID, for: indexPath) as! cusomTableViewCell
 
-        // Configure the cell...
+        cell.configure(title: allGroups[indexPath.row].title, age: allGroups[indexPath.row].desc, image: allGroups[indexPath.row].image)
 
         return cell
     }
-    */
+    
+    func showAlert(alertText: String, _ index: Int) {
+        let alertCtrl = UIAlertController(title: "Добавить новую группу", message: alertText, preferredStyle: UIAlertController.Style.alert)
+        let alertButtonOk = UIAlertAction(title: "Да", style: UIAlertAction.Style.default, handler: { [self]_ in
+            DataStorage.shared.myGroups.append(allGroups[index])
+//            self.navigationController?.popViewController(animated: true)
+            
+        })
+        let alertButtonCancel = UIAlertAction(title: "Отменить", style: UIAlertAction.Style.destructive, handler: nil)
+        alertCtrl.addAction(alertButtonOk)
+        alertCtrl.addAction(alertButtonCancel)
+        present(alertCtrl, animated: true, completion: nil)
+    }
+    
+   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        showAlert(alertText: "Добавить группу в Избранное?", indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
 
     /*
     // Override to support conditional editing of the table view.
