@@ -24,7 +24,6 @@ class MyFriendTVCell: UITableViewCell {
         shadow.layer.shadowOpacity = 0.4
         shadow.layer.shadowRadius = 3
         shadow.backgroundColor = .white
-        
         return shadow
     }()
     
@@ -44,7 +43,7 @@ class MyFriendTVCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         contentView.addSubview(avatarShadow)
-        
+        avatarShadow.addSubview(friendAvatar)
         contentView.addSubview(friendNameLabel)
         contentView.addSubview(friendAgeLabel)
     }
@@ -78,7 +77,7 @@ class MyFriendTVCell: UITableViewCell {
         
         avatarShadow.frame = CGRect(x: 5, y: height / 2, width: imageHeight, height: imageHeight)
         avatarShadow.layer.cornerRadius = imageHeight / 2
-        avatarShadow.addSubview(friendAvatar)
+        
         friendNameLabel.frame = CGRect(x: imageHeight + 15, y: 5, width: 100, height: 20)
         friendAgeLabel.frame = CGRect(x: imageHeight + 15, y: 25, width: 200, height: 20)
         

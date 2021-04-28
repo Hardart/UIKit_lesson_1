@@ -8,22 +8,33 @@
 import UIKit
 
 class TestVC: UIViewController {
-
+    
+    let isLiked = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        let width = view.frame.size.width
+        
+        
+        let iconButton = testButton(frame: CGRect(x: (width - 300) / 2, y: 200, width: 120, height: 50))
+        view.addSubview(iconButton)
+//        iconButton.configure(with: btnWithIcon(icon: UIImage(systemName: "heart") , text: "1000"))
+        iconButton.backgroundColor = .cyan
+        iconButton.addTarget(self, action: #selector(tapLikeButton), for: .touchUpInside)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func tapLikeButton(sender: UIButton) {
+//        if !isLiked {
+//
+//
+//            let addLike = Int()! + 1
+//        } else {
+//
+//        }
+//        isLiked = !isLiked
+//    }
+        
+        print()
     }
-    */
-
 }
+

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class customCollectionViewController: UIViewController {
+class photosCVC: UIViewController {
 
     
     @IBOutlet weak var customCollectView: UICollectionView!
@@ -25,7 +25,7 @@ class customCollectionViewController: UIViewController {
  
 }
 
-extension customCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate  {
+extension photosCVC: UICollectionViewDataSource, UICollectionViewDelegate  {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
@@ -33,21 +33,32 @@ extension customCollectionViewController: UICollectionViewDataSource, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectCellID, for: indexPath) as? customCollectionViewCell else {return UICollectionViewCell()}
-        cell.configure(title:  "Photo \(indexPath.row + 1)", image: photos[indexPath.item])
+        cell.configure(image: photos[indexPath.item])
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-    }
+
+    
+    
     
 }
 
 
-extension customCollectionViewController: UICollectionViewDelegateFlowLayout {
+extension photosCVC: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 130, height: 130)
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 2
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = (customCollectView.frame.width-4) / 3
+       
+        return CGSize(width: size, height: size)
+    }
+//    
 }

@@ -32,7 +32,7 @@ class AllGroupsTVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: groupCellID, for: indexPath) as! cusomTableViewCell
-
+        
         cell.configure(title: allGroups[indexPath.row].title, age: allGroups[indexPath.row].desc, image: allGroups[indexPath.row].image)
 
         return cell
@@ -41,7 +41,20 @@ class AllGroupsTVC: UITableViewController {
     func showAlert(alertText: String, _ index: Int) {
         let alertCtrl = UIAlertController(title: "Добавить новую группу", message: alertText, preferredStyle: UIAlertController.Style.alert)
         let alertButtonOk = UIAlertAction(title: "Да", style: UIAlertAction.Style.default, handler: { [self]_ in
-            DataStorage.shared.myGroups.append(allGroups[index])
+            
+            var isEnable = false
+            
+            for item in DataStorage.shared.myGroups {
+                if item.title == allGroups[index].title {
+                    isEnable = true
+                    sameGroupAlert(alertText: "\(allGroups[index].title) уже есть в Избранном", index)
+                }
+            }
+            
+            if !isEnable {
+                DataStorage.shared.myGroups.append(allGroups[index])
+            }
+            
 //            self.navigationController?.popViewController(animated: true)
             
         })
@@ -51,13 +64,20 @@ class AllGroupsTVC: UITableViewController {
         present(alertCtrl, animated: true, completion: nil)
     }
     
+    func sameGroupAlert(alertText: String, _ index: Int) {
+        let alertCtrl = UIAlertController(title: alertText, message: "", preferredStyle: UIAlertController.Style.alert)
+        let alertButtonOk = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil)
+        alertCtrl.addAction(alertButtonOk)
+        present(alertCtrl, animated: true, completion: nil)
+    }
+    
    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         showAlert(alertText: "Добавить группу в Избранное?", indexPath.row)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return 64
     }
 
     /*

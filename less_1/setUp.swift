@@ -6,3 +6,12 @@
 //
 
 import Foundation
+import UIKit
+
+func setUpUser(userNum: Int, name: String, age: UInt) -> User {
+    var user = User(name: name, age: age)
+    
+    let imageName = String(userNum) + ".1"
+    user.avatar = UIImage(named: imageName)
+    return user
+}

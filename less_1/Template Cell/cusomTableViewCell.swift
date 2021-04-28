@@ -36,7 +36,7 @@ class cusomTableViewCell: UITableViewCell {
         clearCell()
     }
     
-    func configure(title: String?, age: String?, image: UIImage?) {
+    func configure(title: String, age: String?, image: UIImage?) {
         titleLabel.text = title
         descLabel.text = age
         myImageView.image = image

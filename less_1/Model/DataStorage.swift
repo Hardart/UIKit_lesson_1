@@ -11,17 +11,36 @@ class DataStorage: NSObject {
 
     static let shared = DataStorage()
     private override init() {
-        
+        super.init()
     }
     
+    var like = 0
     
     var users: [User] = [
-        User(name: "Petr", age: 26, avatar: UIImage(named: "Petr"), photoArray: [UIImage(named: "Petr")!, UIImage(named: "Petr")!, UIImage(named: "Petr")!]),
+        User(name: "Petr", age: 22, avatar: UIImage(named: "Petr"), photoArray: [UIImage(named: "Petr")!, UIImage(named: "Petr")!, UIImage(named: "Petr")!]),
         User(name: "Irina", age: 27,  avatar: UIImage(named: "Irina"), photoArray: [UIImage(named: "Irina")!, UIImage(named: "Irina")!, UIImage(named: "Irina")!]),
         User(name: "Artem", age: 35,  avatar: UIImage(named: "Artem"), photoArray: [UIImage(named: "Artem")!, UIImage(named: "Artem")!, UIImage(named: "Artem")!]),
-        User(name: "Oleg", age: 30, avatar: UIImage(named: "Oleg"), photoArray: [UIImage(named: "Oleg")!, UIImage(named: "Oleg")!, UIImage(named: "Oleg")!]),
-        User(name: "Yulia", age: 25,  avatar: UIImage(named: "Yulia"), photoArray: [UIImage(named: "Yulia")!, UIImage(named: "Yulia")!, UIImage(named: "Yulia")!])
+        User(name: "Oleg", age: 31, avatar: UIImage(named: "Oleg"), photoArray: [UIImage(named: "Oleg")!, UIImage(named: "Oleg")!, UIImage(named: "Oleg")!]),
+        User(name: "Yulia", age: 25,  avatar: UIImage(named: "Yulia"), photoArray: [UIImage(named: "Yulia")!, UIImage(named: "Yulia")!, UIImage(named: "Yulia")!]),
+        User(name: "James", age: 24, avatar: UIImage(named: "Oleg"), photoArray: [UIImage(named: "Oleg")!, UIImage(named: "Oleg")!, UIImage(named: "Oleg")!]),
+        User(name: "Harper", age: 45, avatar: UIImage(named: "Oleg"), photoArray: [UIImage(named: "Oleg")!, UIImage(named: "Oleg")!, UIImage(named: "Oleg")!]),
+        User(name: "Evelyn", age: 29, avatar: UIImage(named: "Oleg"), photoArray: [UIImage(named: "Oleg")!, UIImage(named: "Oleg")!, UIImage(named: "Oleg")!]),
+        User(name: "Oliver", age: 38, avatar: UIImage(named: "Oleg"), photoArray: [UIImage(named: "Oleg")!, UIImage(named: "Oleg")!, UIImage(named: "Oleg")!]),
+        User(name: "Jack", age: 14, avatar: UIImage(named: "Oleg"), photoArray: [UIImage(named: "Oleg")!, UIImage(named: "Oleg")!, UIImage(named: "Oleg")!]),
+        User(name: "Connor", age: 43, avatar: UIImage(named: "Oleg"), photoArray: [UIImage(named: "Oleg")!, UIImage(named: "Oleg")!, UIImage(named: "Oleg")!]),
+        User(name: "Oscar", age: 26, avatar: UIImage(named: "Oleg"), photoArray: [UIImage(named: "Oleg")!, UIImage(named: "Oleg")!, UIImage(named: "Oleg")!]),
+        User(name: "Robert", age: 22, avatar: UIImage(named: "Oleg"), photoArray: [UIImage(named: "Oleg")!, UIImage(named: "Oleg")!, UIImage(named: "Oleg")!]),
+        User(name: "Daniel", age: 11, avatar: UIImage(named: "Oleg"), photoArray: [UIImage(named: "Oleg")!, UIImage(named: "Oleg")!, UIImage(named: "Oleg")!]),
+        User(name: "Emily", age: 18, avatar: UIImage(named: "Oleg"), photoArray: [UIImage(named: "Oleg")!, UIImage(named: "Oleg")!, UIImage(named: "Oleg")!]),
+        User(name: "Megan", age: 42, avatar: UIImage(named: "Oleg"), photoArray: [UIImage(named: "Oleg")!, UIImage(named: "Oleg")!, UIImage(named: "Oleg")!]),
+        User(name: "Ava", age: 33, avatar: UIImage(named: "Oleg"), photoArray: [UIImage(named: "Oleg")!, UIImage(named: "Oleg")!, UIImage(named: "Oleg")!]),
+        User(name: "Susan", age: 30, avatar: UIImage(named: "Oleg"), photoArray: [UIImage(named: "Oleg")!, UIImage(named: "Oleg")!, UIImage(named: "Oleg")!]),
+        User(name: "Jessica", age: 27, avatar: UIImage(named: "Oleg"), photoArray: [UIImage(named: "Oleg")!, UIImage(named: "Oleg")!, UIImage(named: "Oleg")!]),
+        User(name: "Sophie", age: 15, avatar: UIImage(named: "Oleg"), photoArray: [UIImage(named: "Oleg")!, UIImage(named: "Oleg")!, UIImage(named: "Oleg")!]),
+        User(name: "Richard", age: 21, avatar: UIImage(named: "Oleg"), photoArray: [UIImage(named: "Oleg")!, UIImage(named: "Oleg")!, UIImage(named: "Oleg")!]),
+        User(name: "Julia", age: 26,  avatar: UIImage(named: "Yulia"), photoArray: [UIImage(named: "Yulia")!, UIImage(named: "Yulia")!, UIImage(named: "Yulia")!])
     ]
+    
     
     var groups: [Group] = [
         Group(title: "Федерация регби России", image: UIImage(named: "rugbyRussia"), desc: "Спортивная организация"),
@@ -37,5 +56,6 @@ class DataStorage: NSObject {
         Group(title: "Тату студия black_muza_penzа", image: UIImage(named: "Black"), desc: "Татуировки на любой вкус")
     ]
     
-    var myGroups: [Group] = []
+    var myGroups = [Group]()
+    
 }

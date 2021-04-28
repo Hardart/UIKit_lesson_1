@@ -45,14 +45,12 @@ class MyGroupsTVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        print(DataStorage.shared.myGroups)
         DataStorage.shared.myGroups.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .fade)
-        print(DataStorage.shared.myGroups)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return 60
     }
 
     /*

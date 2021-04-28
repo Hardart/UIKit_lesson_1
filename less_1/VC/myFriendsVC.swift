@@ -7,7 +7,7 @@
 
 import UIKit
 
-class newTableViewController: UIViewController {
+class myFriendsVC: UIViewController {
     
     @IBOutlet weak var myTableView: UITableView!
     
@@ -17,43 +17,51 @@ class newTableViewController: UIViewController {
     var letters: [String] = []
     var contacts = [[User]]()
     
+    let searchController: UISearchController = {
+        let searchField = UISearchController()
+        return searchField
+    }()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.myTableView.reloadData()        
+        self.myTableView.reloadData()
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.searchController = searchController
+        searchController.searchResultsUpdater = self
         setNames()
         myTableView.dataSource = self
         myTableView.delegate = self
         
-
+        
         myTableView.register(MyFriendTVCell.self, forCellReuseIdentifier: MyFriendTVCell.id)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let dst = segue.destination as! customCollectionViewController
-        let src = segue.source as! newTableViewController
+        let dst = segue.destination as! photosCVC
+        let src = segue.source as! myFriendsVC
         let index = src.myTableView.indexPathForSelectedRow
         dst.photos = contacts[index!.section][index!.row].photoArray
     }
     
-    func sorting(){
+    
+    func setNames() {
+        
         var arr = [String]()
-        for (_, el) in myFriends.enumerated() {
+        for el in myFriends {
             arr.append(String(el.name.prefix(1)))
         }
         
         myFriends.sort{ ($0.name as String) < ($1.name as String) }
         letters = Array(Set(arr))
         letters.sort()
-    }
-    
-    func setNames() {
-        sorting()
+        
         for i in 0..<letters.count {
             var array = [User]()
             for j in 0..<myFriends.count {
@@ -73,26 +81,31 @@ class newTableViewController: UIViewController {
 //    }
 //}
 
-extension newTableViewController: UITableViewDataSource, UITableViewDelegate {
+extension myFriendsVC: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        print(text)
+    }
+    
+    
+}
+
+extension myFriendsVC: UITableViewDataSource, UITableViewDelegate {
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: toCollecViewSegue, sender: self)        
+        
+        performSegue(withIdentifier: toCollecViewSegue, sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return letters.count
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerTitle = UILabel()
-        headerTitle.text = letters[section]
-        headerTitle.backgroundColor = .systemGray5
-        
-        return headerTitle
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return letters[section]
     }
     
     
@@ -116,8 +129,18 @@ extension newTableViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        DataStorage.shared.users.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .fade)
+        tableView.beginUpdates()
+        contacts[indexPath[0]].remove(at: indexPath[1])
+        tableView.deleteRows(at: [indexPath, indexPath], with: .automatic)
+        
+        if contacts[indexPath[0]].isEmpty {
+            contacts.remove(at: indexPath[0])
+            letters.remove(at: indexPath[0])
+            tableView.deleteSections(IndexSet(arrayLiteral: indexPath[0]), with: .automatic)
+        }
+        
+        tableView.endUpdates()
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
